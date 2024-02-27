@@ -1,8 +1,11 @@
 import { createServer } from "node:http";
 
+export const HOST = 'localhost';
+export const PORT = 8000;
+
 const requestListener = function (req, res) {
     if (req.url === "/redirect") {
-        res.setHeader("location", "/redirected");
+        res.setHeader("location", `http://${HOST}:${PORT}/redirected`);
         res.setHeader("Set-Cookie", "cookie");
         res.setHeader("x-custom-header", "coucou");
         res.writeHead(302);
@@ -22,8 +25,6 @@ const requestListener = function (req, res) {
 
 const server = createServer(requestListener);
 
-export const HOST = 'localhost';
-export const PORT = 8000;
 server.listen(PORT, HOST, () => {
     console.log(`Server is running on http://${HOST}:${PORT}`);
 });
