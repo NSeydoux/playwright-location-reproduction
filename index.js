@@ -2,7 +2,10 @@ import { createServer } from "node:http";
 
 const requestListener = function (req, res) {
     if (req.url === "/redirect") {
-        res.writeHead(302, { location: "/redirected", "Set-Cookie": "cookie", "x-custom-header": "coucou" });
+        res.setHeader("location", "/redirected");
+        res.setHeader("Set-Cookie", "cookie");
+        res.setHeader("x-custom-header", "coucou");
+        res.writeHead(302);
         return res.end();
     }
     res.writeHead(200, { "Content-type": "text/html" });
