@@ -5,8 +5,8 @@ export const PORT = 8000;
 
 const requestListener = function (req, res) {
     if (req.url === "/redirect") {
-        res.setHeader("location", `http://${HOST}:${PORT}/redirected`);
         res.setHeader("Set-Cookie", "cookie");
+        res.setHeader("location", `http://${HOST}:${PORT}/redirected`);
         res.setHeader("x-custom-header", "coucou");
         res.writeHead(302);
         return res.end();
