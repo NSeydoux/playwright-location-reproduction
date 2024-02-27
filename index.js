@@ -8,7 +8,7 @@ const requestListener = function (req, res) {
         res.setHeader("Set-Cookie", "cookie");
         res.setHeader("location", `http://${HOST}:${PORT}/redirected`);
         res.setHeader("x-custom-header", "coucou");
-        res.writeHead(302);
+        res.writeHead(303);
         return res.end();
     }
     res.writeHead(200, { "Content-type": "text/html" });
